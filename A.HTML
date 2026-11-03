@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Asmita 💗</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background: #111827;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            color: #4a0404;
+        }
+
+        /* Ambient Glowing Background Layer */
+        .ambient-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fda4af 0%, #f472b6 40%, #e11d48 100%);
+            z-index: 1;
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: pulseGlow 8s infinite alternate ease-in-out;
+        }
+
+        .orb-1 {
+            width: 320px;
+            height: 320px;
+            background: #f43f5e;
+            top: -50px;
+            left: -50px;
+        }
+
+        .orb-2 {
+            width: 380px;
+            height: 380px;
+            background: #fb7185;
+            bottom: -80px;
+            right: -50px;
+            animation-delay: 3s;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(1) translate(0, 0);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1.2) translate(30px, -20px);
+                opacity: 0.8;
+            }
+        }
+
+        /* Floating Emojis Background Layer */
+        .bg-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .floating-emoji {
+            position: absolute;
+            display: block;
+            font-size: 24px;
+            animation: floatUp 18s linear infinite;
+            bottom: -60px;
+            opacity: 0.8;
+            user-select: none;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.9;
+            }
+
+            85% {
+                opacity: 0.9;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            max-width: 420px;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 28px;
+            padding: 38px 30px;
+            box-shadow: 0 25px 50px -12px rgba(225, 29, 72, 0.25);
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .card.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #be123c;
+            margin-bottom: 12px;
+        }
+
+        p {
+            font-size: 15px;
+            color: #4b5563;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            padding: 14px 28px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35);
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(225, 29, 72, 0.45);
+        }
+
+        .btn-secondary {
+            background: rgba(244, 63, 94, 0.1);
+            color: #be123c;
+            box-shadow: none;
+            margin-top: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(244, 63, 94, 0.2);
+            box-shadow: none;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid #fecdd3;
+            border-radius: 14px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .option-label:hover {
+            background: #fff1f2;
+            border-color: #f43f5e;
+        }
+
+        .option-label input {
+            margin-right: 12px;
+            accent-color: #e11d48;
+        }
+
+        .text-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #fecdd3;
+            border-radius: 12px;
+            outline: none;
+            margin-top: 8px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .text-input:focus {
+            border-color: #e11d48;
+            box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
+        }
+
+        .fancy-picker-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .fancy-field {
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 241, 242, 0.85));
+            border: 2px solid #fecdd3;
+            border-radius: 16px;
+            padding: 14px 18px;
+            box-shadow: 0 4px 12px rgba(244, 63, 94, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .fancy-field:focus-within {
+            border-color: #e11d48;
+            box-shadow: 0 6px 16px rgba(225, 29, 72, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .fancy-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            color: #be123c;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .fancy-input {
+            width: 100%;
+            border: none;
+            background: transparent;
+            font-size: 15px;
+            color: #4a0404;
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .emoji-icon {
+            font-size: 18px;
+            margin-right: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ambient-bg">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <div class="bg-particles">
+        <span class="floating-emoji" style="left: 8%; animation-duration: 16s; animation-delay: 0s;">💖</span>
+        <span class="floating-emoji" style="left: 22%; animation-duration: 21s; animation-delay: 3s;">🌸</span>
+        <span class="floating-emoji" style="left: 38%; animation-duration: 18s; animation-delay: 1s;">✨</span>
+        <span class="floating-emoji" style="left: 55%; animation-duration: 24s; animation-delay: 5s;">🌷</span>
+        <span class="floating-emoji" style="left: 72%; animation-duration: 19s; animation-delay: 2s;">💕</span>
+        <span class="floating-emoji" style="left: 88%; animation-duration: 22s; animation-delay: 4s;">✨</span>
+    </div>
+
+    <div class="container">
+        <!-- Formspree Endpoint Form -->
+        <form id="preferenceForm" action="https://formspree.io/f/xzeeyplb" method="POST" style="display:none;">
+            <input type="hidden" name="Owner Email" value="yashrajlade25@gmail.com">
+            <input type="hidden" name="Recipient" value="Asmita">
+            <input type="hidden" name="Favourite Choice" id="inputFav">
+            <input type="hidden" name="Selected Date" id="inputDate">
+            <input type="hidden" name="Selected Time" id="inputTime">
+        </form>
+
+        <!-- SCREEN 1: WELCOME -->
+        <div id="screen1" class="card active">
+            <h1>Hi Asmita! 💗</h1>
+            <p>I made a little something. Hope it makes you smile.</p>
+            <button class="btn" onclick="goToScreen(2)">Open it →</button>
+        </div>
+
+        <!-- SCREEN 2: PERMISSION -->
+        <div id="screen2" class="card">
+            <h1>I wanna tell you something</h1>
+            <p>Would you like to hear it?</p>
+            <button class="btn" onclick="goToScreen(4)">YES 💗</button>
+            <button class="btn btn-secondary" onclick="goToScreen(3)">NO</button>
+        </div>
+
+        <!-- SCREEN 3: SECOND CHANCE -->
+        <div id="screen3" class="card">
+            <h1>Please, just a while? 🥺</h1>
+            <p>I just wanted to ask you something. No pressure at all. 🌷</p>
+            <button class="btn" onclick="goToScreen(4)">Okay, continue →</button>
+            <button class="btn btn-secondary" onclick="goToScreen(8)">I'd rather not</button>
+        </div>
+
+        <!-- SCREEN 4: THE INVITATION -->
+        <div id="screen4" class="card">
+            <h1>Can we catch up for a while, please? ✨</h1>
+            <p>(🌸☕)</p>
+            <button class="btn" onclick="goToScreen(5)">Yes, sounds nice! ✨</button>
+        </div>
+
+        <!-- SCREEN 5: FAVOURITE -->
+        <div id="screen5" class="card">
+            <h1>What's your favourite?</h1>
+            <p>Pick anything you like. This is completely optional.</p>
+
+            <div class="options-group">
+                <label class="option-label"><input type="radio" name="fav" value="Tea" onclick="toggleOther(false)"> 🍵
+                    Tea</label>
+                <label class="option-label"><input type="radio" name="fav" value="Coffee" onclick="toggleOther(false)">
+                    ☕ Coffee</label>
+                <label class="option-label"><input type="radio" name="fav" value="Ice cream"
+                        onclick="toggleOther(false)"> 🍦 Ice cream</label>
+                <label class="option-label"><input type="radio" name="fav" value="Other" onclick="toggleOther(true)"> ✨
+                    Other</label>
+            </div>
+
+            <input type="text" id="otherInput" class="text-input" placeholder="Type your choice here..."
+                style="display:none;">
+
+            <button class="btn" onclick="saveFavouriteAndNext()">Continue →</button>
+            <button class="btn btn-secondary" onclick="goToScreen(6)">Skip this</button>
+        </div>
+
+        <!-- SCREEN 6: AVAILABILITY -->
+        <div id="screen6" class="card">
+            <h1>When are you free?</h1>
+            <p>Choose a date and time that suits you. Both fields optional.</p>
+
+            <div class="fancy-picker-container">
+                <div class="fancy-field">
+                    <span class="fancy-label"><span class="emoji-icon">📅</span> Select a Date</span>
+                    <input type="date" id="prefDate" class="fancy-input">
+                </div>
+                <div class="fancy-field">
+                    <span class="fancy-label"><span class="emoji-icon">🕒</span> Select a Time</span>
+                    <input type="time" id="prefTime" class="fancy-input">
+                </div>
+            </div>
+
+            <button class="btn" onclick="submitChoices()">Send my choices 💌</button>
+            <button class="btn btn-secondary" onclick="skipAndFinish()">Skip date & time</button>
+        </div>
+
+        <!-- SCREEN 7: SUCCESS -->
+        <div id="screen7" class="card">
+            <h1>Thank you! 💌</h1>
+            <p>Thanks for taking a moment. Whatever your answer, I appreciate it. Have a lovely day, Asmita! 🌸</p>
+        </div>
+
+        <!-- SCREEN 8: POLITE GOODBYE -->
+        <div id="screen8" class="card">
+            <h1>Thanks ASMITA 🌼</h1>
+            <p>I hope you have a lovely day!</p>
+        </div>
+    </div>
+
+    <script>
+        let userResponses = {
+            favourite: "Skipped",
+            date: "Not selected",
+            time: "Not selected"
+        };
+
+        function goToScreen(screenNumber) {
+            document.querySelectorAll('.card').forEach(card => {
+                card.classList.remove('active');
+            });
+            document.getElementById(`screen${screenNumber}`).classList.add('active');
+        }
+
+        function toggleOther(show) {
+            const otherInput = document.getElementById('otherInput');
+            otherInput.style.display = show ? 'block' : 'none';
+            if (show) otherInput.focus();
+        }
+
+        function saveFavouriteAndNext() {
+            const selectedRadio = document.querySelector('input[name="fav"]:checked');
+            if (selectedRadio) {
+                if (selectedRadio.value === 'Other') {
+                    const customVal = document.getElementById('otherInput').value.trim();
+                    userResponses.favourite = customVal ? `Other: ${customVal}` : 'Other (Custom)';
+                } else {
+                    userResponses.favourite = selectedRadio.value;
+                }
+            }
+            goToScreen(6);
+        }
+
+        function submitChoices() {
+            const dateVal = document.getElementById('prefDate').value;
+            const timeVal = document.getElementById('prefTime').value;
+
+            if (dateVal) userResponses.date = dateVal;
+            if (timeVal) userResponses.time = timeVal;
+
+            sendDataToEmail();
+            goToScreen(7);
+        }
+
+        function skipAndFinish() {
+            sendDataToEmail();
+            goToScreen(7);
+        }
+
+        function sendDataToEmail() {
+            document.getElementById('inputFav').value = userResponses.favourite;
+            document.getElementById('inputDate').value = userResponses.date;
+            document.getElementById('inputTime').value = userResponses.time;
+
+            const form = document.getElementById('preferenceForm');
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            }).catch(err => console.log(err));
+        }
+    </script>
+</body>
+
+</html>
